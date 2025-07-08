@@ -1,0 +1,6 @@
+# Translations for English
+# For translations of pages, you can set `translationKey` in Front Matter
+# https://gohugo.io/content-management/multilingual/#translation-of-strings
+
+[missing-translation]
+other = "> [!help]+ Missing translation\n> This page is not yet translated. You can help [==translate it==[primary]]({{ .Edit }}).  \nPlease refer to the content of [“{{ .Title }}”]({{ .Source }})."

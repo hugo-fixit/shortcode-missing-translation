@@ -1,0 +1,7 @@
+# Translations for Simplified Chinese
+# 简体中文的翻译
+# 对于页面的翻译，可以在 Front Matter 中设置 `translationKey`
+# https://gohugo.io/content-management/multilingual/#translation-of-strings
+
+[missing-translation]
+other = "> [!help]+ 缺少翻译\n> 本文尚未翻译完成，欢迎 [==参与翻译==[primary]]({{ .Edit }})。请参考 [“{{ .Title }}”]({{ .Source }}) 的内容。"

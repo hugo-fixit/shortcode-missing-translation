@@ -1,34 +1,26 @@
 <!-- markdownlint-disable-file MD033 MD041 -->
-<h1 align="center">{component-xxx} | FixIt</h1>
+<h1 align="center">shortcode-missing-translation | FixIt</h1>
 
-<!-- TODO 如有需要，请在此处添加图片 -->
+<img width="810" alt="image" src="https://github.com/user-attachments/assets/a18d2888-0f5d-4c82-929e-c79b6465c04a" />
+<img width="810" alt="image" src="https://github.com/user-attachments/assets/7868c724-8bbd-4336-b43d-4ed607019988" />
 
 <div align="center" class="ignore">
-  <p><!-- TODO 如有需要，请在此处添加描述 --></p>
+  <p>用于多语言站点，缺少翻译时暂时以指定的语言呈现当前页面翻译的内容。</p>
   简体中文 |
-  <a href="https://fixit.lruihao.cn/zh-cn/ecosystem/hugo-fixit/{component-xxx}/?lang=chinese_traditional">繁體中文</a> |
+  <a href="https://fixit.lruihao.cn/zh-cn/ecosystem/hugo-fixit/shortcode-missing-translation/?lang=chinese_traditional">繁體中文</a> |
   <a href="/README.en.md">English</a> |
-  <a href="https://fixit.lruihao.cn/ecosystem/hugo-fixit/{component-xxx}/?lang=french">Français</a> |
-  <a href="https://fixit.lruihao.cn/ecosystem/hugo-fixit/{component-xxx}/?lang=russian">Русский язык</a> |
-  <a href="https://fixit.lruihao.cn/ecosystem/hugo-fixit/{component-xxx}/?lang=spanish">Español</a> |
-  <a href="https://fixit.lruihao.cn/ecosystem/hugo-fixit/{component-xxx}/?lang=hindi">हिन्दी</a> |
-  <a href="https://fixit.lruihao.cn/ecosystem/hugo-fixit/{component-xxx}/?lang=german">deutsch</a> |
-  <a href="https://fixit.lruihao.cn/ecosystem/hugo-fixit/{component-xxx}/?lang=korean">한국어</a> |
-  <a href="https://fixit.lruihao.cn/ecosystem/hugo-fixit/{component-xxx}/?lang=japanese">しろうと</a>
+  <a href="https://fixit.lruihao.cn/ecosystem/hugo-fixit/shortcode-missing-translation/?lang=french">Français</a> |
+  <a href="https://fixit.lruihao.cn/ecosystem/hugo-fixit/shortcode-missing-translation/?lang=russian">Русский язык</a> |
+  <a href="https://fixit.lruihao.cn/ecosystem/hugo-fixit/shortcode-missing-translation/?lang=spanish">Español</a> |
+  <a href="https://fixit.lruihao.cn/ecosystem/hugo-fixit/shortcode-missing-translation/?lang=hindi">हिन्दी</a> |
+  <a href="https://fixit.lruihao.cn/ecosystem/hugo-fixit/shortcode-missing-translation/?lang=german">deutsch</a> |
+  <a href="https://fixit.lruihao.cn/ecosystem/hugo-fixit/shortcode-missing-translation/?lang=korean">한국어</a> |
+  <a href="https://fixit.lruihao.cn/ecosystem/hugo-fixit/shortcode-missing-translation/?lang=japanese">しろうと</a>
 </div>
-
-## Demo
-
-TODO 如有需要，请在此处添加演示
-
-## 特性
-
-- [ ] Foo
-- [ ] Bar
 
 ## 要求
 
-- FixIt v0.4.0 或更高版本。
+适用于所有 Hugo 主题。
 
 ## 安装组件
 
@@ -45,7 +37,7 @@ TODO 如有需要，请在此处添加演示
   [[module.imports]]
     path = "github.com/hugo-fixit/FixIt"
   [[module.imports]]
-    path = "github.com/hugo-fixit/{component-xxx}"
+    path = "github.com/hugo-fixit/shortcode-missing-translation"
 ```
 
 在 Hugo 的第一次启动时，它将下载所需的文件。
@@ -63,45 +55,40 @@ hugo mod tidy
 
 ```bash
 git submodule add https://github.com/hugo-fixit/FixIt.git themes/FixIt
-git submodule add https://github.com/hugo-fixit/{component-xxx}.git themes/{component-xxx}
+git submodule add https://github.com/hugo-fixit/shortcode-missing-translation.git themes/shortcode-missing-translation
 ```
 
 接下来编辑项目的 `hugo.toml` 并将此主题组件添加到你的主题中：
 
 ```toml
-theme = ["FixIt", "{component-xxx}"]
+theme = ["FixIt", "shortcode-missing-translation"]
 ```
 
 ## 配置
 
-为了通过 FixIt 主题在 `layouts/_partials/custom.html` 文件中开放的 [自定义块](https://fixit.lruihao.cn/references/blocks/) 将 `{component-xxx}.html` 注入到 `custom-assets` 中，你需要填写以下必要配置：
-
 ```toml
-[params]
-  [params.customPartials]
-    # ... other partials
-    head = []
-    profile = []
-    aside = []
-    comment = []
-    footer = []
-    widgets = []
-    assets = [
-      "inject/{component-xxx}.html",
-    ]
-    postFooterBefore = []
-    postFooterAfter = []
-    # ... other partials
+[gitInfo]
+  repo = "https://github.com/hugo-fixit/docs"
+  branch = "main"
+  # 相对于仓库根目录的内容目录路径
+  dir = "content"
 ```
-
-TODO 如有需要，请在此处添加配置...
 
 ## 使用 Shortcode
 
 以下是一个使用示例：
 
 ```markdown
-{{< shortcode-xxx >}}
+{{< missing-translation >}}
+```
+
+> [!TIP]
+> 请至少保证有一个语言的翻译内容，如果有多个语言的翻译内容，默认选择第一个翻译内容。
+
+或者，指定已有翻译语言：
+
+```markdown
+{{< missing-translation "en" >}}
 ```
 
 ## 参考

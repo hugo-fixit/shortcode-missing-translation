@@ -1,0 +1,45 @@
+{{- /*
+  * Renders the content of the current page's translation in the specified language.
+  * @param {string} The language key of site from which to retrieve the translation.
+  * @example {{< missing-translation >}}
+  * @example {{< missing-translation zh-cn >}}
+  * @returns {template.HTML}
+- */}}
+
+{{- /* Git info */ -}}
+{{- $gitRepo := "" -}}
+{{- $editURL := "" -}}
+{{- with .Site.Params.gitInfo -}}
+  {{- if .Repo -}}
+    {{- $gitRepo = strings.TrimSuffix "/" .Repo -}}
+    {{- $editURL = printf "%v/edit/%v/%v/%v" $gitRepo .Branch .Dir $.Page.File.Path -}}
+  {{- end -}}
+{{- end -}}
+
+{{- $sourceLanguage := .Get 0 -}}
+{{- if (not $sourceLanguage) | and (gt $.Page.Translations.Len 0) }}
+  {{- $sourceLanguage = (index $.Page.Translations 0).Language.Lang }}
+{{- end }}
+{{- $translateRefPage := "" }}
+
+{{- with $sourceLanguage }}
+  {{- if eq $.Page.Language.Lang $sourceLanguage }}
+    {{- errorf "The positional parameter passed to the %q shortcode must not be the language key of the current site. See %s" $.Name $.Position }}
+  {{- else }}
+    {{- with index (where $.Page.Translations "Language.Lang" $sourceLanguage) 0 }}
+      {{- $translateRefPage = . -}}
+    {{- else }}
+      {{- errorf "The %q shortcode was unable to find a %q translation of the %q page. See %s" $.Name $sourceLanguage $.Page.Path $.Position }}
+    {{- end }}
+  {{- end }}
+{{- else }}
+  {{- errorf "The %q shortcode requires a positional parameter indicating the source language key. See %s" $.Name $.Position }}
+{{- end -}}
+
+{{- with $translateRefPage }}
+  {{- dict "Edit" $editURL "Title" .Title "Source" .RelPermalink | T "missing-translation" | $.Page.RenderString }}
+  {{- if ne hugo.Context.MarkupScope "home" -}}
+    {{/*  <div class="missing-translation">{{ .RenderShortcodes }}</div>  */}}
+    <div class="missing-translation" style="border: 2px dashed var(--fi-secondary, #919191); padding-inline: 0.5rem;">{{ .Content }}</div>
+  {{- end -}}
+{{- end -}}
