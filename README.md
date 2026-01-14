@@ -91,6 +91,12 @@ theme = ["FixIt", "shortcode-missing-translation"]
 {{< missing-translation "en" >}}
 ```
 
+是否在虚线框内呈现原始内容，默认值为 `true`。
+
+```markdown
+{{< missing-translation original=false >}}
+```
+
 ## 参考
 
 - [开发主题组件 | FixIt](https://fixit.lruihao.cn/contributing/components/)

@@ -91,6 +91,12 @@ Or, specify an existing translation language:
 {{< missing-translation "en" >}}
 ```
 
+Whether to render the original content inside a dashed box. Default is `true`.
+
+```markdown
+{{< missing-translation original=false >}}
+```
+
 ## References
 
 - [Develop Theme Components | FixIt](https://fixit.lruihao.cn/contributing/components/)

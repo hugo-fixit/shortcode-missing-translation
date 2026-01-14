@@ -1,10 +1,11 @@
 {{- /*
   * Renders the content of the current page's translation in the specified language.
-  * @param {string} The language key of site from which to retrieve the translation.
+  * @param {string} 0 - The language key of site from which to retrieve the translation.
+  * @param {string} [original=true] - Whether to render the original content inside a dashed box.
   * @example {{< missing-translation >}}
   * @example {{< missing-translation zh-cn >}}
   * @returns {template.HTML}
-- */}}
+*/ -}}
 
 {{- /* Git info */ -}}
 {{- $gitRepo := "" -}}
@@ -36,9 +37,10 @@
   {{- errorf "The %q shortcode requires a positional parameter indicating the source language key. See %s" $.Name $.Position }}
 {{- end -}}
 
+{{- $original := cond .IsNamedParams (.Get "original") (.Get 1) | default true -}}
 {{- with $translateRefPage }}
   {{- dict "Edit" $editURL "Title" .Title "Source" .RelPermalink | T "missing-translation" | $.Page.RenderString }}
-  {{- if ne hugo.Context.MarkupScope "home" -}}
+  {{- if (ne hugo.Context.MarkupScope "home") | and $original -}}
     {{/*  <div class="missing-translation">{{ .RenderShortcodes }}</div>  */}}
     <div class="missing-translation" style="border: 2px dashed var(--fi-secondary, #919191); padding-inline: 0.5rem;">{{ .Content }}</div>
   {{- end -}}
