@@ -41,7 +41,40 @@
 {{- with $translateRefPage }}
   {{- dict "Edit" $editURL "Title" .Title "Source" .RelPermalink | T "missing-translation" | $.Page.RenderString }}
   {{- if (ne hugo.Context.MarkupScope "home") | and $original -}}
-    {{/*  <div class="missing-translation">{{ .RenderShortcodes }}</div>  */}}
     <div class="missing-translation" style="border: 2px dashed var(--fi-secondary, #919191); padding-inline: 0.5rem;">{{ .Content }}</div>
+    {{- /* Set the store variables for the shortcodes used in the original content, so that the necessary CSS and JS files can be loaded. */ -}}
+    {{- if .Store.Get "hasAplayer" -}}
+      {{- $.Page.Store.Set "hasAplayer" true -}}
+    {{- end -}}
+    {{- if .Store.Get "hasMusic" -}}
+      {{- $.Page.Store.Set "hasMusic" true -}}
+    {{- end -}}
+    {{- if .Store.Get "hasMapbox" -}}
+      {{- $.Page.Store.Set "hasMapbox" true -}}
+    {{- end -}}
+    {{- if .Store.Get "hasJsonViewer" -}}
+      {{- $.Page.Store.Set "hasJsonViewer" true -}}
+    {{- end -}}
+    {{- if .Store.Get "hasTyped" -}}
+      {{- $.Page.Store.Set "hasTyped" true -}}
+    {{- end -}}
+    {{- if .Store.Get "hasKaTeX" -}}
+      {{- $.Page.Store.Set "hasKaTeX" true -}}
+    {{- end -}}
+    {{- if .Store.Get "hasMathJax" -}}
+      {{- $.Page.Store.Set "hasMathJax" true -}}
+    {{- end -}}
+    {{- if .Store.Get "hasEcharts" -}}
+      {{- $.Page.Store.Set "hasEcharts" true -}}
+    {{- end -}}
+    {{- if .Store.Get "hasMermaid" -}}
+      {{- $.Page.Store.Set "hasMermaid" true -}}
+    {{- end -}}
+    {{- if .Store.Get "hasTabs" -}}
+      {{- $.Page.Store.Set "hasTabs" true -}}
+    {{- end -}}
+    {{- if .Store.Get "hasEncryptor" -}}
+      {{- $.Page.Store.Set "hasEncryptor" true -}}
+    {{- end -}}
   {{- end -}}
 {{- end -}}
