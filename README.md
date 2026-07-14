@@ -24,7 +24,7 @@
 
 ## 安装组件
 
-安装方式与 [安装主题](https://fixit.lruihao.cn/zh-cn/documentation/installation/) 相同，有多种安装方式，任选一种即可，这里介绍两种主流方式。
+安装方式与 [安装主题](https://fixit.lruihao.cn/zh-cn/docs/installation/) 相同，有多种安装方式，任选一种即可，这里介绍两种主流方式。
 
 ### 作为 Hugo 模块安装
 
@@ -67,7 +67,7 @@ theme = ["FixIt", "shortcode-missing-translation"]
 ## 配置
 
 ```toml
-[gitInfo]
+[git_info]
   repo = "https://github.com/hugo-fixit/docs"
   branch = "main"
   # 相对于仓库根目录的内容目录路径

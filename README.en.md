@@ -24,7 +24,7 @@ Applicable to all Hugo themes.
 
 ## Install Component
 
-The installation method is the same as [installing a theme](https://fixit.lruihao.cn/documentation/installation/). There are several ways to install, choose one, Here are two mainstream ways.
+The installation method is the same as [installing a theme](https://fixit.lruihao.cn/docs/installation/). There are several ways to install, choose one, Here are two mainstream ways.
 
 ### Install as Hugo Module
 
@@ -67,7 +67,7 @@ theme = ["FixIt", "shortcode-missing-translation"]
 ## Configuration
 
 ```toml
-[gitInfo]
+[git_info]
   repo = "https://github.com/hugo-fixit/docs"
   branch = "main"
   # the content directory path relative to the root of the repository

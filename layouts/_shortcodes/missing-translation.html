@@ -10,7 +10,7 @@
 {{- /* Git info */ -}}
 {{- $gitRepo := "" -}}
 {{- $editURL := "" -}}
-{{- with .Site.Params.gitInfo -}}
+{{- with .Site.Params.git_info -}}
   {{- if .Repo -}}
     {{- $gitRepo = strings.TrimSuffix "/" .Repo -}}
     {{- $editURL = printf "%v/edit/%v/%v/%v" $gitRepo .Branch .Dir $.Page.File.Path -}}
@@ -24,7 +24,7 @@
 {{- $translateRefPage := "" }}
 
 {{- with $sourceLanguage }}
-  {{- if eq $.Page.Language.Lang $sourceLanguage }}
+  {{- if eq $.Page.Language.Name $sourceLanguage }}
     {{- errorf "The positional parameter passed to the %q shortcode must not be the language key of the current site. See %s" $.Name $.Position }}
   {{- else }}
     {{- with index (where $.Page.Translations "Language.Lang" $sourceLanguage) 0 }}
